@@ -1,0 +1,10 @@
+#:import hex kivy.utils.get_color_from_hex
+<MainScreen>:
+        canvas:
+                Color:
+                        rgba: hex('#32292f')
+                Rectangle:
+                        size: self.size
+        Label:
+                font_size: 42
+                text: root.name

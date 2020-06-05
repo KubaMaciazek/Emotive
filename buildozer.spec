@@ -19,10 +19,10 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.include_patterns = assets/*,images/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
-#source.exclude_exts = spec
+source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = tests, bin
+source.exclude_dirs = tests, bin
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
@@ -46,10 +46,10 @@ requirements = python3,kivy
 #garden_requirements =
 
 # (str) Presplash of the application
-#presplash.filename = %(source.dir)s/data/presplash.png
+presplash.filename = %(source.dir)s/data/emotive_logo_full_below.png
 
 # (str) Icon of the application
-#icon.filename = %(source.dir)s/data/emotive_short_logo.png
+icon.filename = %(source.dir)s/data/emotive_icon_square.png
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
@@ -82,16 +82,16 @@ fullscreen = 0
 # red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray,
 # darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy,
 # olive, purple, silver, teal.
-#android.presplash_color = #FFFFFF
+android.presplash_color = #d7f9f1
 
 # (list) Permissions
 #android.permissions = INTERNET
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 27
+android.api = 28
 
 # (int) Minimum API your APK will support.
-#android.minapi = 21
+android.minapi = 21
 
 # (int) Android SDK version to use
 #android.sdk = 20
