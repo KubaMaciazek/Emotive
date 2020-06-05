@@ -27,25 +27,38 @@
                         size_hint: 1, .1
                         Button:
                                 id: clear_btn
-                                text: "Clear"
-                                size_hint: 1, 1
+                                size_hint: .5, 1
                                 on_release: root.clear_screen()
                                 background_color: hex('#162d50')
                                 background_normal: ''
-                                background_down: ''
+                                background_down: 'data/button_down.png'
+                                StackLayout:
+                                        pos: self.parent.pos
+                                        size: self.parent.size
+                                        Image:
+                                                source: 'data/clear_icon.png'
 
                         Button:
                                 id: copy_btn
-                                size_hint: 1, 1
+                                size_hint: .5, 1
                                 on_release: root.copy_output()
                                 background_color: hex('#162d50')
                                 background_normal: ''
-                                text: "Copy"
-
+                                background_down: 'data/button_down.png'
+                                StackLayout:
+                                        pos: self.parent.pos
+                                        size: self.parent.size
+                                        Image:
+                                                source: 'data/copy_icon.png'
                         Button:
                                 id: camera_btn
-                                text: "Emoji"
                                 size_hint: 1, 1
                                 on_release: root.print_emoji()
                                 background_color: hex('#ffcb47')
                                 background_normal: ''
+                                background_down: 'data/button_down.png'
+                                StackLayout:
+                                        pos: self.parent.pos
+                                        size: self.parent.size
+                                        Image:
+                                                source: 'data/camera_icon.png'
