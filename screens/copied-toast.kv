@@ -1,0 +1,15 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+<Toast>:
+    id: copied_toast
+    auto_dismiss: False
+    size_hint: .7, .05
+    pos_hint: {'y': .11}
+    background: 'data/toast_bg.png'
+    background_color: 0,0,0,0
+    Label:
+        text: 'Copied to clipboard!'
+        color: 1,1,1,.8
+        font_size: '16sp'
+
+<ScreenManagement>:
+    transition: FadeTransition()
