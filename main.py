@@ -6,7 +6,15 @@ Builder.load_file('screens/main-screen.kv')
 
 
 class MainScreen(Screen):
-    pass
+    def print_emoji(self):
+        self.ids.emoji_output.text += "XO"
+
+    def clear_screen(self):
+        self.ids.emoji_output.text = ""
+
+    def copy_output(self):
+        # TODO: pop up 'copied to clipboard'
+        self.ids.emoji_output.text = "Copied!"
 
 
 class Emotive(App):

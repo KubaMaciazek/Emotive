@@ -2,9 +2,50 @@
 <MainScreen>:
         canvas:
                 Color:
-                        rgba: hex('#32292f')
+                        rgba: hex('#d7f9f1')
                 Rectangle:
                         size: self.size
-        Label:
-                font_size: 42
-                text: root.name
+        BoxLayout:
+                orientation: 'vertical'
+                Image:
+                        source: 'data/emotive_logo_full_right.png'
+                        size_hint: 1, .05
+                Image:
+                        source: 'data/emotive_logo_full_below.png'
+                        size_hint: 1, .7
+                Label:
+                        id: emoji_output
+                        size_hint: .9, .15
+                        pos_hint: {'x': .05}
+                        font_size: 26
+                        text_size: self.size
+                        halign: 'center'
+                        valign: 'middle'
+                        color: hex('#162d50')
+                BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint: 1, .1
+                        Button:
+                                id: clear_btn
+                                text: "Clear"
+                                size_hint: 1, 1
+                                on_release: root.clear_screen()
+                                background_color: hex('#162d50')
+                                background_normal: ''
+                                background_down: ''
+
+                        Button:
+                                id: copy_btn
+                                size_hint: 1, 1
+                                on_release: root.copy_output()
+                                background_color: hex('#162d50')
+                                background_normal: ''
+                                text: "Copy"
+
+                        Button:
+                                id: camera_btn
+                                text: "Emoji"
+                                size_hint: 1, 1
+                                on_release: root.print_emoji()
+                                background_color: hex('#ffcb47')
+                                background_normal: ''
