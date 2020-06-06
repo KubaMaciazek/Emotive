@@ -55,7 +55,7 @@ def detect_faces(emotion):
                 out = cv2.resize(gray, (
                     48, 48))  # Resize face so all images have same size
                 print("wriring file to dataset\\%s\\%s.jpg" % (emotion, file_number))
-                cv2.imwrite("dataset\\%s\\%s.jpg" % (emotion, file_number),
+                cv2.imwrite("./dataset/%s/%s.jpg" % (emotion, file_number),
                             out)  # Write image
             except:
                 pass  # If error, pass file
