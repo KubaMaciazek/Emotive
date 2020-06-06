@@ -11,6 +11,7 @@ from kivy.uix.camera import Camera
 from emoji.parser import Parser
 from kivy.graphics.texture import Texture
 import cv2
+import pyperclip
 
 Builder.load_file('screens/main-screen.kv')
 Builder.load_file('screens/copied-toast.kv')
@@ -85,7 +86,7 @@ class MainScreen(Screen):
         self.emoji_display.clear_emoji()
 
     def copy_output(self):
-        Clipboard.copy(self.emoji_string)
+        pyperclip.copy(self.emoji_string)
         Factory.Toast().open()
 
     def set_camera(self, capture):
