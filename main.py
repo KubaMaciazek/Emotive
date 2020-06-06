@@ -32,7 +32,7 @@ class EmojiDisplay:
         self.layout = anchor_layout
 
     def add_emoji(self, emoji_source):
-        emoji = Image(source=emoji_source, size_hint=(None, None), height=100, width=100)
+        emoji = Image(source=emoji_source, size_hint=(None, None), height=45, width=45)
         self.layout.add_widget(emoji)
         return
 
