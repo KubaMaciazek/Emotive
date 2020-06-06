@@ -13,15 +13,11 @@
                 Image:
                         source: 'data/emotive_logo_full_below.png'
                         size_hint: 1, .7
-                Label:
-                        id: emoji_output
+                StackLayout:
+                        id: emoji_display
                         size_hint: .9, .15
                         pos_hint: {'x': .05}
-                        font_size: '30sp'
-                        text_size: self.size
-                        halign: 'center'
-                        valign: 'middle'
-                        color: hex('#162d50')
+                        orientation: 'lr-tb'
                 BoxLayout:
                         orientation: 'horizontal'
                         size_hint: 1, .1
