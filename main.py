@@ -57,6 +57,9 @@ class KivyCamera(Image):
             # display image from the texture
             self.texture = image_texture
 
+    def take_photo(self):
+        return None
+
 
 class MainScreen(Screen):
     emoji_parser = None
@@ -72,10 +75,9 @@ class MainScreen(Screen):
         self._request_android_permissions()
 
     def print_emoji(self):
-        photo = None
-        emoji = self.emoji_parser.get_emoji_from_photo(photo)
+        photo = self.camera.take_photo()
+        emoji, emoji_png = self.emoji_parser.get_emoji_from_photo(photo)
         self.emoji_string += emoji
-        emoji_png = self.emoji_parser.get_emoji_png(emoji)
         self.emoji_display.add_emoji(emoji_png)
 
     def clear_screen(self):
