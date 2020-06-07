@@ -1,3 +1,7 @@
 /.idea/
 /bin/
 /.buildozer/
+/model-creation/venv/
+/model-creation/images/
+/model-creation/.idea/
+model-29.xml
