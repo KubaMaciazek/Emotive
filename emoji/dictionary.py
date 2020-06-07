@@ -1,7 +1,9 @@
 emoji_dict = {
-    "\U0001F600": "data/emoji/emoji_u1f600.png",
-    "\U0001F601": "data/emoji/emoji_u1f601.png",
-    "\U0001F602": "data/emoji/emoji_u1f602.png",
-    "\U0001F603": "data/emoji/emoji_u1f603.png",
-    "\U0001F604": "data/emoji/emoji_u1f604.png"
+    "anger": ["\U0001F600", "data/emoji/emoji_u1f600.png"],
+    "disgust": ["\U0001F600", "data/emoji/emoji_u1f600.png"],
+    "fear": ["\U0001F600", "data/emoji/emoji_u1f600.png"],
+    "happy": ["\U0001F600", "data/emoji/emoji_u1f600.png"],
+    "neutral": ["\U0001F600", "data/emoji/emoji_u1f600.png"],
+    "sadness": ["\U0001F600", "data/emoji/emoji_u1f600.png"],
+    "surprise": ["\U0001F600", "data/emoji/emoji_u1f600.png"],
 }
