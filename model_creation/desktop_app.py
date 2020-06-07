@@ -1,5 +1,5 @@
 from collections import Counter
-from processor import prepare_photo
+from photo_processing.processor import prepare_photo
 import cv2
 
 
