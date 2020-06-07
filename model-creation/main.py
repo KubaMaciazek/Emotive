@@ -3,16 +3,72 @@ import random
 import cv2
 import numpy as np
 
+faceDet = cv2.CascadeClassifier(
+    "photo-processing/haarcascade_frontalface_default.xml")
+faceDet_two = cv2.CascadeClassifier(
+    "photo-processing/haarcascade_frontalface_alt2.xml")
+faceDet_three = cv2.CascadeClassifier(
+    "photo-processing/haarcascade_frontalface_alt.xml")
+faceDet_four = cv2.CascadeClassifier(
+    "photo-processing/haarcascade_frontalface_alt_tree.xml")
+face_detectors = [faceDet, faceDet_two, faceDet_three, faceDet_four]
 
-def process_images():
-    # ToDo: process source images:
-    #   find face in each of source pictures,
-    #   cut square containing it out,
-    #   converte it to grayscale,
-    #   resize and save in corresponding emotion
-    #   directory in processed_images.
-    #   Make sure all images have the same size.
-    pass
+
+def find_face(grayscale_photo):
+    for detector in face_detectors:
+        face = detector.detectMultiScale(grayscale_photo,
+                                         scaleFactor=1.1,
+                                         minNeighbors=10,
+                                         minSize=(5, 5),
+                                         flags=cv2.CASCADE_SCALE_IMAGE)
+        if len(face) == 1:
+            return face
+
+
+def prepare_photo(photo):
+    grayscale_photo = cv2.cvtColor(photo,
+                                   cv2.COLOR_BGR2GRAY)
+    face = find_face(grayscale_photo)
+    if face is not None:
+        # print('Face not found')
+        # else:
+        # print("Face found")
+        for (x, y, width,
+             height) in face:  # get coordinates and size of rectangle
+            cropped_photo = grayscale_photo[y:y + height,
+                            x:x + width]  # Cut the frame to size
+            resized_photo = cv2.resize(cropped_photo, (
+                48, 48))  # Resize face so all images have same size
+            return resized_photo  # Write image
+
+
+def detect_faces(emotion):
+    files = glob.glob(
+        "images/raw_images/%s/*" % emotion)  # Get list of all images with emotion
+    count = 0
+    for f in files:
+        photo = cv2.imread(f)  # Open image
+        # processed_photo = prepare_photo(photo)
+        processed_photo = photo
+        if processed_photo is None:
+            pass
+        else:
+            # print("writing to images/processed_images/%s/%s.jpg" % (
+            # emotion, count))
+            cv2.imwrite("images/processed_images/%s/%s.jpg" % (emotion, count),
+                        processed_photo)  # Write image
+            count += 1  # Increment image number
+
+
+def prepare_dataset(emotions):
+    # emotions = ["anger", "contempt", "disgust", "fear", "happy",
+    #             "sadness", "surprise"]
+    for em in emotions:
+        detect_faces(em)
+
+
+def process_images(emotions):
+    prepare_dataset(emotions)
 
 
 def get_training_prediction_set(category):
@@ -45,7 +101,7 @@ def prepare_data(categorises):
 
 def get_model(categories):
     training_data, training_labels, prediction_data, \
-        prediction_labels = prepare_data(categories)
+    prediction_labels = prepare_data(categories)
     fishface = cv2.face.FisherFaceRecognizer_create()
     fishface.train(training_data, np.asarray(training_labels))
 
@@ -60,19 +116,22 @@ def get_model(categories):
         else:
             incorrect += 1
             cnt += 1
-    print("Correctness: {}".format((100*correct)/(correct + incorrect)))
+    print("Correctness: {}".format((100 * correct) / (correct + incorrect)))
     return fishface
 
 
 def main():
     directory = "./images"
-    emotions = ["anger", "contempt", "disgust", "fear",
-                "happy", "sadness", "surprise"]
-    reduced = ["anger", "disgust", "happy",
+    # emotions = ["anger", "contempt", "disgust", "fear",
+    #             "happy", "sadness", "surprise"]
+    emotions = ["anger", "disgust", "happy",
                "surprise"]
-    process_images()
+    # emotions = ['angry', 'happy', 'surprise',
+    #             'neutral']
+    process_images(emotions)
     model = get_model(emotions)
     model.save("..\\model.xml")
+
 
 if __name__ == "__main__":
     main()

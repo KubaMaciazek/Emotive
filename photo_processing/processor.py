@@ -60,8 +60,3 @@ def prepare_dataset():
                 "sadness", "surprise"]
     for em in emotions:
         detect_faces(em)
-
-ima = cv2.imread("me.jpg")
-im2 = prepare_photo(ima)
-cv2.imshow("me",im2)
-cv2.waitKey()
