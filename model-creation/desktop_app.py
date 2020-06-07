@@ -74,7 +74,7 @@ def main():
     emotions = ["anger", "disgust", "happy",
                 "surprise"]
     model = cv2.face.FisherFaceRecognizer_create()
-    model.read("..\\model.xml")
+    model.read("..\\model-30.xml")
 
     cap = cv2.VideoCapture(0)
     pred = 0

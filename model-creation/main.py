@@ -72,6 +72,7 @@ def process_images(emotions):
 
 
 def get_training_prediction_set(category):
+    print("Listing files for: " + category)
     files = glob.glob("images\\processed_images\\%s\\*" % category)
     random.shuffle(files)
     training = files[:int(len(files) * 0.8)]
@@ -80,17 +81,21 @@ def get_training_prediction_set(category):
 
 
 def prepare_data(categorises):
+    print("Preparing data...")
     training_data = []
     training_labels = []
     prediction_data = []
     prediction_labels = []
     for category in categorises:
+        print("Category: " + category)
         training, prediciton = get_training_prediction_set(category)
+        print("Training set...")
         for item in training:
             image = cv2.imread(item)
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             training_data.append(image)
             training_labels.append(categorises.index(category))
+        print("Predictions set...")
         for item in prediciton:
             image = cv2.imread(item)
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -103,8 +108,10 @@ def get_model(categories):
     training_data, training_labels, prediction_data, \
     prediction_labels = prepare_data(categories)
     fishface = cv2.face.FisherFaceRecognizer_create()
+    print("Training model...")
     fishface.train(training_data, np.asarray(training_labels))
 
+    print("Assessing model...")
     cnt = 0
     correct = 0
     incorrect = 0
@@ -124,13 +131,12 @@ def main():
     directory = "./images"
     # emotions = ["anger", "contempt", "disgust", "fear",
     #             "happy", "sadness", "surprise"]
-    emotions = ["anger", "disgust", "happy",
-               "surprise"]
-    # emotions = ['angry', 'happy', 'surprise',
-    #             'neutral']
-    process_images(emotions)
+    emotions = ["anger", "disgust", "fear", "happy",
+                "neutral", "sadness", "surprise"]
+    process_images()
     model = get_model(emotions)
-    model.save("..\\model.xml")
+    model.write("..\\model.xml")
+
 
 
 if __name__ == "__main__":
