@@ -2,13 +2,13 @@ import cv2
 import glob
 
 faceDet = cv2.CascadeClassifier(
-    "haarcascade_frontalface_default.xml")
+    "emoji/model_creation/photo_processing/haarcascade_frontalface_default.xml")
 faceDet_two = cv2.CascadeClassifier(
-    "haarcascade_frontalface_alt2.xml")
+    "emoji/model_creation/photo_processing/haarcascade_frontalface_alt2.xml")
 faceDet_three = cv2.CascadeClassifier(
-    "haarcascade_frontalface_alt.xml")
+    "emoji/model_creation/photo_processing/haarcascade_frontalface_alt.xml")
 faceDet_four = cv2.CascadeClassifier(
-    "haarcascade_frontalface_alt_tree.xml")
+    "emoji/model_creation/photo_processing/haarcascade_frontalface_alt_tree.xml")
 face_detectors = [faceDet, faceDet_two, faceDet_three, faceDet_four]
 
 

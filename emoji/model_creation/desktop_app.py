@@ -1,5 +1,5 @@
 from collections import Counter
-from photo_processing.processor import prepare_photo
+from emoji.model_creation.photo_processing.processor import prepare_photo
 import cv2
 
 
@@ -21,7 +21,7 @@ def main():
     emotions = ["anger", "disgust", "fear", "happy",
                 "neutral", "sadness", "surprise"]
     model = cv2.face.FisherFaceRecognizer_create()
-    model.read("..\\model-30.xml")
+    model.read("model-30.xml")
 
     cap = cv2.VideoCapture(0)
     pred = 0
@@ -62,6 +62,9 @@ def main():
             break
     cap.release()
     cv2.destroyAllWindows()
+
+def launch():
+    main()
 
 
 if __name__ == "__main__":
