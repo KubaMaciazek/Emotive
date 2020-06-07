@@ -2,7 +2,7 @@ import glob
 import random
 import cv2
 import numpy as np
-from processor import prepare_dataset
+from photo_processing.processor import prepare_dataset
 
 
 def process_images(emotions):

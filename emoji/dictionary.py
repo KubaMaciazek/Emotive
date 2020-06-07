@@ -7,3 +7,6 @@ emoji_dict = {
     "sadness": ["\U0001F600", "data/emoji/emoji_u1f600.png"],
     "surprise": ["\U0001F600", "data/emoji/emoji_u1f600.png"],
 }
+
+emotions = ["anger", "disgust", "fear", "happy",
+            "neutral", "sadness", "surprise"]

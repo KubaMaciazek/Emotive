@@ -1,7 +1,7 @@
 /.idea/
 /bin/
 /.buildozer/
-/model_creation/venv/
-/model_creation/images/
-/model_creation/.idea/
+/emoji/model_creation/venv/
+/emoji/model_creation/images/
+/emoji/model_creation/.idea/
 model-29.xml
