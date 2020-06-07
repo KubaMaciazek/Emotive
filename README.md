@@ -51,3 +51,7 @@ To start using the app, go into `Emotive` folder and run `main.py` with python.
 ```
 $ cd Emotive && python main.py
 ```
+
+## Dataset
+
+Dataset used to train our model can be found here: https://www.kaggle.com/deadskull7/fer2013
