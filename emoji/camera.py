@@ -12,7 +12,7 @@ class EmojiRecognitionCamera(Image):
         super(EmojiRecognitionCamera, self).__init__(**kwargs)
         self.capture = capture
         self.model = cv2.face.FisherFaceRecognizer_create()
-        self.model.read("..\\model-30.xml")
+        self.model.read("model-30.xml")
         self.pred = 0
         self.history = self.get_history()
         self.current_emotion = emotions[3]
