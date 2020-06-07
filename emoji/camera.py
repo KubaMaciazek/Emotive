@@ -8,7 +8,7 @@ from emoji.dictionary import emotions, emoji_dict
 
 
 class EmojiRecognitionCamera(Image):
-    def __init__(self, capture, fps, **kwargs):
+    def __init__(self, capture, fps, emoji_preview, **kwargs):
         super(EmojiRecognitionCamera, self).__init__(**kwargs)
         self.capture = capture
         self.model = cv2.face.FisherFaceRecognizer_create()
@@ -18,10 +18,11 @@ class EmojiRecognitionCamera(Image):
         self.current_emotion = emotions[3]
         self.frame_count = 0
         self.fps = fps
+        self.emoji_preview = emoji_preview
         Clock.schedule_interval(self.update, 1.0 / self.fps)
 
     def update(self, dt):
-        self.frame_count = self.frame_count + 1 if self.frame_count < (self.fps/2) else 0
+        self.frame_count = (self.frame_count + 1) % (self.fps / 10)
         ret, frame = self.capture.read()
         if ret:
             # convert it to texture
@@ -83,4 +84,5 @@ class EmojiRecognitionCamera(Image):
         return emoji_dict[self.current_emotion]
 
     def update_emoji_preview(self):
+        _, self.emoji_preview.source = self.get_current_emoji()
         return

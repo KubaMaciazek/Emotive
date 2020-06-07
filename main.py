@@ -27,8 +27,8 @@ class Toast(ModalView):
 class EmojiDisplay:
     layout = None
 
-    def __init__(self, anchor_layout):
-        self.layout = anchor_layout
+    def __init__(self, layout):
+        self.layout = layout
 
     def add_emoji(self, emoji_source):
         emoji = Image(source=emoji_source, size_hint=(None, None), height=45, width=45)
@@ -64,11 +64,15 @@ class MainScreen(Screen):
         Factory.Toast().open()
 
     def set_camera(self, capture):
+        emoji_preview = Image(source="data/emoji/emoji_u1f604.png", size_hint=(None, None), height=150, width=150,
+                              pos_hint={'x': .05, 'y': 0})
         if self.is_android():
             self.camera = Camera(index=1)
         else:
-            self.camera = EmojiRecognitionCamera(capture=capture, fps=30)
+            self.camera = EmojiRecognitionCamera(capture=capture, fps=30, emoji_preview=emoji_preview, size_hint=(1, 1),
+                                                 pos_hint={'x': 0, 'y': 0})
         self.ids.camera_layout.add_widget(self.camera)
+        self.ids.camera_layout.add_widget(emoji_preview)
 
     @staticmethod
     def is_android():
