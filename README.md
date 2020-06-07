@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Small Android app converting photos into emoji.
+Kivy application that recognizes emotions and turn them into emoticons. Once running you can see image from camera in your computer and current emotion that has been recognized. You can save the emoji anytime and then copy to any other application. Enjoy!
 
 ## Developer dependencies
 
