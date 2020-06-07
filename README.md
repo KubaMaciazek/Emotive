@@ -9,6 +9,8 @@ Kivy application that recognizes emotions and turn them into emoticons. Once run
 
 - Python 3.7
 - Kivy 1.11.1
+- OpenCV-Python 4.2.0.34
+- OpenCV-Contrib-Python 4.2.0.34
 - Pyperclip 1.7.0
 
 
@@ -42,7 +44,7 @@ $ python3 -m pip install git+https://github.com/kivy/kivy.git@master
 
 ## Run the app
 
-<b>Note:</b> Before you run the app, remember to check if you have pyperclip installed. If not run ``pip install pyperclip``
+<b>Note:</b> Before you run the app, remember to check if you have other dependencies installed. If not run ``pip install opencv-python opencv-contrib-python pyperclip``
 
 To start using the app, go into `Emotive` folder and run `main.py` with python.
 
